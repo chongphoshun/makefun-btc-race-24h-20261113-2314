@@ -166,7 +166,7 @@ class Bot:
 
     def _sell(self, state):
         held = state.positions.get(SYMBOL)
-        if held is None:
+        if held is None or held.qty <= 0:
             return []
         return [{"side": "sell", "symbol": SYMBOL, "qty": held.qty,
                  "max_slippage_bps": MAX_SLIPPAGE_BPS}]
